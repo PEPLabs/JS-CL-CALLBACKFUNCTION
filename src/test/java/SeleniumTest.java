@@ -34,19 +34,6 @@ import org.openqa.selenium.support.ui.Wait;
 public class SeleniumTest {
 
 
-    @Test
-    public void testPageText() throws InterruptedException {
-        //setup
-        WebElement speechPart1 = webDriver.findElement(By.id("opening"));
-        String opening = "To be, or not to be, that is the question:";
-        WebElement speechPart2 = webDriver.findElement(By.id("theRest"));
-        String theRest = "Whether 'tis nobler in the mind to suffer";
-
-        Thread.sleep(6000);
-
-        Assert.assertEquals(opening, speechPart1.getText());
-        Assert.assertEquals(theRest, speechPart2.getText().substring(0, 41));
-    }
     private WebDriver webDriver;
     private WebDriverWait wait;
     private static final Logger logger = Logger.getLogger(SeleniumTest.class.getName());
@@ -539,7 +526,20 @@ public class SeleniumTest {
             }
         }
     }
-    
+        @Test
+    public void testPageText() throws InterruptedException {
+        //setup
+        WebElement speechPart1 = webDriver.findElement(By.id("opening"));
+        String opening = "To be, or not to be, that is the question:";
+        WebElement speechPart2 = webDriver.findElement(By.id("theRest"));
+        String theRest = "Whether 'tis nobler in the mind to suffer";
+
+        Thread.sleep(6000);
+
+        Assert.assertEquals(opening, speechPart1.getText());
+        Assert.assertEquals(theRest, speechPart2.getText().substring(0, 41));
+    }
+  
     private void cleanup() {
         stopHttpServer();
         if (webDriver != null) {
